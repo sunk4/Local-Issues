@@ -1,0 +1,26 @@
+services:
+  db_postgres:
+    image: postgres
+    container_name: db_postgres_local_issues
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=local_issues
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "54320:5432"
+    networks:
+      - spring-demo
+    restart: unless-stopped
+
+
+
+
+networks:
+  spring-demo:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
