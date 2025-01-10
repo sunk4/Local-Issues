@@ -1,6 +1,7 @@
 package com.roman.localIssues.complaint_service.complaint;
 
 import com.roman.localIssues.complaint_service.claimer.ClaimerDto;
+import com.roman.localIssues.complaint_service.enums.Status;
 import com.roman.localIssues.complaint_service.image.ImageDto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -21,6 +22,7 @@ public record ComplaintDto(
         String videoUrl,
         UUID claimerId,
         ClaimerDto claimer,
+        Status status,
         LocalDateTime createdAt,
         LocalDateTime updatedAt
 ) {

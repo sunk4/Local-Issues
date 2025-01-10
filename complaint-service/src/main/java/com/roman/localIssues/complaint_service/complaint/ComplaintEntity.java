@@ -1,6 +1,7 @@
 package com.roman.localIssues.complaint_service.complaint;
 
 import com.roman.localIssues.complaint_service.claimer.ClaimerEntity;
+import com.roman.localIssues.complaint_service.enums.Status;
 import com.roman.localIssues.complaint_service.image.ImageEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -18,7 +19,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 @Data
-@ToString
 @Table(name = "complaint_service_complaint")
 public class ComplaintEntity {
     @Id
@@ -42,6 +42,10 @@ public class ComplaintEntity {
 
     @Column(nullable = false)
     private String type;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
 
     @OneToMany(mappedBy = "complaint", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ImageEntity> images;
